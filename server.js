@@ -5,7 +5,12 @@ const Express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
+/*******************************************************************************
+ * .ENV Variables
+ *******************************************************************************/
 const dotenv = require('dotenv');
+dotenv.config();
 
 /*******************************************************************************
  * Start Express and Cors
