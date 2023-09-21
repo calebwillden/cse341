@@ -2,10 +2,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send(
-        "Hello, World! This is Caleb Willden's web server. Caleb Willden is someone I know, because he is me."
-    );
-});
+const rootController = require('../controllers/root.js');
+
+router.get('/', rootController.getName);
 
 module.exports = router;
