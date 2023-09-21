@@ -23,7 +23,9 @@ const port = process.env.PORT;
  * Routes
  *******************************************************************************/
 app.get('/', (req, res) => {
-    res.send("Hello, World! This is Caleb Willden's web server.");
+    res.send(
+        "Hello, World! This is Caleb Willden's web server. Caleb Willden is someone I know, because he is me."
+    );
 });
 
 /*******************************************************************************
