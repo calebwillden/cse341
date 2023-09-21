@@ -1,37 +1,23 @@
+// SOURCE: Based on code by Nathan Birch combined with my own modifications
+
 /*******************************************************************************
  * Dependencies
  *******************************************************************************/
-const Express = require('express');
-const cors = require('cors');
+const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-
-/*******************************************************************************
- * .ENV Variables
- *******************************************************************************/
+const cors = require('cors');
 const dotenv = require('dotenv');
-dotenv.config();
 
 /*******************************************************************************
- * Start Express and Cors
+ * Express
  *******************************************************************************/
-const app = new Express();
+dotenv.config(); // TO-DO: Implement in a /db/connect.js file
+const port = process.env.PORT || 3000;
+const app = express();
+
 app.use(bodyParser.json());
 app.use(cors());
-
-/*******************************************************************************
- * Connection
- *******************************************************************************/
-const port = process.env.PORT;
-
-/*******************************************************************************
- * Routes
- *******************************************************************************/
-app.get('/', (req, res) => {
-    res.send(
-        "Hello, World! This is Caleb Willden's web server. Caleb Willden is someone I know, because he is me."
-    );
-});
+app.use('/', require('./routes'));
 
 /*******************************************************************************
  * Listener
