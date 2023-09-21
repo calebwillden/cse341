@@ -1,5 +1,3 @@
-// SOURCE: Based on code by Nathan Birch combined with my own modifications
-
 /*******************************************************************************
  * Dependencies
  *******************************************************************************/
@@ -11,13 +9,13 @@ const dotenv = require('dotenv');
 /*******************************************************************************
  * Express
  *******************************************************************************/
-dotenv.config(); // TO-DO: Implement in a /db/connect.js file
+dotenv.config(); // TO-DO: Implement this in a /db/connect.js file
 const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/', require('./routes'));
+app.use('/', require('./routes')); // SOURCE: This line is based on code by Nathan Birch seen at https://www.youtube.com/watch?v=68ubggfsQlE
 
 /*******************************************************************************
  * Listener
