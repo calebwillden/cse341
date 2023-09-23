@@ -4,6 +4,6 @@ const router = express.Router();
 
 const rootController = require('../controllers/root.js');
 
-router.get('/', rootController.getName);
+router.get('/', rootController.testDatabase);
 
 module.exports = router;

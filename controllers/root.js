@@ -1,5 +1,11 @@
+const connect = require('../db/connect.js');
+
 const getName = async (req, res) => {
     res.send('Caleb Willden');
 };
 
-module.exports = { getName };
+const testDatabase = async (req, res) => {
+    res.send(connect());
+};
+
+module.exports = { getName, testDatabase };
