@@ -1,11 +1,7 @@
-const connect = require('../db/connect.js');
+const mongoose = require('mongoose');
 
 const getName = async (req, res) => {
     res.send('Caleb Willden');
 };
 
-const testDatabase = async (req, res) => {
-    res.send(connect());
-};
-
-module.exports = { getName, testDatabase };
+module.exports = { getName };

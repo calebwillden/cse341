@@ -4,6 +4,21 @@
 ### Root
 GET http://localhost:3000/
 
+### Contact
+GET http://localhost:3000/contact
+
+### Create Contact
+POST http://localhost:3000/contact/create HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Bethany",
+    "lastName": "Willden",
+    "email": "bethany@willden.com",
+    "favoriteColor": "purple",
+    "birthday": "2004-04-21"
+}
+
 //*******************************************************************************
 // Production
 //*******************************************************************************
