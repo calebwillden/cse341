@@ -13,10 +13,7 @@ const getAll = async (req, res) => {
  * GET CONTACT BY ID
  ******************************************************************************/
 const getById = async (req, res) => {
-    const contactId = req.params.id;
-
-    console.log(mongoose.Types.ObjectId.isValid(req.params.id));
-
+    const contactId = new mongoose.Types.ObjectId(req.params.id);
     const contact = await ContactModel.findById(contactId);
     res.send(contact);
 };

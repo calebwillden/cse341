@@ -29,6 +29,5 @@ app.listen(port, async () => {
     } catch (e) {
         console.log(e);
     }
-    console.log(`Running Mongoose: ${mongoose.version}`);
     console.log(`Listening at port ${port}...`);
 });
