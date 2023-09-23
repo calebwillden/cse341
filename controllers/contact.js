@@ -4,7 +4,7 @@ const { ContactModel } = require('../models');
 /*******************************************************************************
  * GET ALL CONTACTS
  ******************************************************************************/
-const getAllContacts = async (req, res) => {
+const getAll = async (req, res) => {
     const allContacts = await ContactModel.find();
     res.send(allContacts);
 };
@@ -12,8 +12,8 @@ const getAllContacts = async (req, res) => {
 /*******************************************************************************
  * GET CONTACT BY ID
  ******************************************************************************/
-const getContactById = async (req, res) => {
-    const contactId = req.params.contactId;
+const getById = async (req, res) => {
+    const contactId = req.params.id;
     const contact = await ContactModel.findById(contactId);
     res.send(contact);
 };
@@ -30,7 +30,7 @@ Requires a body following this format:
     birthday: '1997-04-11',
 }
 /*******************************************************************************/
-const createContact = async (req, res) => {
+const create = async (req, res) => {
     try {
         // Start Transaction
         const session = await mongoose.startSession();
@@ -54,4 +54,4 @@ const createContact = async (req, res) => {
     }
 };
 
-module.exports = { getAllContacts, createContact, getContactById };
+module.exports = { getAll, create, getById };
