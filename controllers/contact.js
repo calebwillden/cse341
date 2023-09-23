@@ -14,6 +14,9 @@ const getAll = async (req, res) => {
  ******************************************************************************/
 const getById = async (req, res) => {
     const contactId = req.params.id;
+
+    console.log(mongoose.Types.ObjectId.isValid(req.params.id));
+
     const contact = await ContactModel.findById(contactId);
     res.send(contact);
 };
