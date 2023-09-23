@@ -14,7 +14,7 @@ const getAll = async (req, res) => {
  ******************************************************************************/
 const getById = async (req, res) => {
     const contactId = new mongoose.Types.ObjectId(req.params.id);
-    const contact = await ContactModel.findById(contactId);
+    const contact = await ContactModel.findOne(contactId);
     res.send(contact);
 };
 
