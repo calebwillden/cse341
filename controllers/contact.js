@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 const { ContactModel } = require('../models');
 
 /*******************************************************************************
@@ -13,9 +14,7 @@ const getAll = async (req, res) => {
  * GET CONTACT BY ID
  ******************************************************************************/
 const getById = async (req, res) => {
-    console.log(req.params.id);
-    const id = new mongoose.Types.ObjectId(req.params.id);
-    console.log(id);
+    const id = new ObjectId(req.params.id);
     const contact = await ContactModel.find({ _id: id });
     res.send(contact);
 };
