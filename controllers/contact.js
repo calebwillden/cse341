@@ -5,7 +5,7 @@ const { ContactModel } = require('../models');
 /*******************************************************************************
  * GET ALL CONTACTS
  ******************************************************************************/
-const getAll = async (req, res) => {
+const getAllContacts = async (req, res) => {
     const allContacts = await ContactModel.find();
     res.send(allContacts);
 };
@@ -13,7 +13,7 @@ const getAll = async (req, res) => {
 /*******************************************************************************
  * GET CONTACT BY ID
  ******************************************************************************/
-const getById = async (req, res) => {
+const getContactById = async (req, res) => {
     const id = new ObjectId(req.params.id);
     const contact = await ContactModel.find({ _id: id });
     res.send(contact);
@@ -31,7 +31,7 @@ Requires a body following this format:
     birthday: '1997-04-11',
 }
 /*******************************************************************************/
-const create = async (req, res) => {
+const createContact = async (req, res) => {
     try {
         // Start Transaction
         const session = await mongoose.startSession();
@@ -48,11 +48,36 @@ const create = async (req, res) => {
         console.log('Transaction committed: Create Contact');
 
         // Send a success message
-        res.status(201).json({ info: 'CONTACT_CREATED' });
+        res.status(201).json({
+            info: 'CONTACT_CREATED',
+            contactId: contactData._id,
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json({ info: 'ERR_SERVER_ERROR' });
     }
 };
 
-module.exports = { getAll, create, getById };
+/*******************************************************************************
+ * UPDATE CONTACT
+ *******************************************************************************/
+const updateContact = async (req, res) => {
+    // TODO
+    // res.status(204);
+};
+
+/*******************************************************************************
+ * DELETE CONTACT
+ *******************************************************************************/
+const deleteContact = async (req, res) => {
+    // TODO
+    // res.status(200);
+};
+
+module.exports = {
+    getAllContacts,
+    getContactById,
+    createContact,
+    updateContact,
+    deleteContact,
+};

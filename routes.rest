@@ -5,10 +5,10 @@
 GET http://localhost:3000/
 
 ### Contact
-GET http://localhost:3000/contact
+GET http://localhost:3000/contacts
 
 ### Create Contact
-POST http://localhost:3000/contact/create HTTP/1.1
+POST http://localhost:3000/contacts/create HTTP/1.1
 content-type: application/json
 
 {
@@ -24,3 +24,9 @@ content-type: application/json
 //*******************************************************************************
 ### Root
 GET https://cse341-b19z.onrender.com
+
+### Contacts
+GET https://cse341-b19z.onrender.com/contacts
+
+### Contact By Id
+GET https://cse341-b19z.onrender.com/contacts/650f4a70f67f2ef5a09fd7ca
