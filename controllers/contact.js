@@ -67,10 +67,10 @@ const createContact = async (req, res) => {
         await session.commitTransaction();
         console.log('Transaction committed.');
 
-        // Send a success message
+        // Send a success message with the new contact's ID
         res.status(201).json({
             info: 'CONTACT_CREATED',
-            contactId: contactData._id,
+            contactId: contact._id,
         });
     } catch (err) {
         console.log(`Transaction aborted. ERROR:\n${err}`);
@@ -114,7 +114,7 @@ const updateContact = async (req, res) => {
 
         // Send a success message
         console.log('Complete.');
-        res.status(204);
+        res.status(204).send();
     } catch (err) {
         res.status(500).json({ info: 'ERR_SERVER_ERROR' });
         console.log(`Aborted. ERROR:\n${err}`);

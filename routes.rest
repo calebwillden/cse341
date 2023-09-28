@@ -23,16 +23,15 @@ content-type: application/json
 }
 
 ### Update Contact
-PUT http://localhost:3000/contacts/6515e3a1b344514c3e84b7af HTTP/1.1
+PUT http://localhost:3000/contacts/6515fc7bd6a63ece385c7129 HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Bell",
-    "favoriteColor": "maroon"
+    "firstName": "Bill"
 }
 
 ### Delete Contact
-DELETE http://localhost:3000/contacts/6515eef693331bc774339592 HTTP/1.1
+DELETE http://localhost:3000/contacts/6515eeed93331bc77433958f HTTP/1.1
 
 //*******************************************************************************
 // Production
@@ -44,14 +43,14 @@ GET https://cse341-b19z.onrender.com/ HTTP/1.1
 GET https://cse341-b19z.onrender.com/contacts HTTP/1.1
 
 ### Get Contacts By ID
-GET https://cse341-b19z.onrender.com/contacts/6515e3a1b344514c3e84b7af HTTP/1.1
+GET https://cse341-b19z.onrender.com/contacts/6515eeed93331bc77433958f HTTP/1.1
 
 ### Create Contact
 POST https://cse341-b19z.onrender.com/contacts HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "John",
+    "firstName": "James",
     "lastName": "Smith",
     "email": "john@smith.com",
     "favoriteColor": "purple",
@@ -59,13 +58,12 @@ content-type: application/json
 }
 
 ### Update Contact
-PUT https://cse341-b19z.onrender.com/contacts/6515e3a1b344514c3e84b7af HTTP/1.1
+PUT https://cse341-b19z.onrender.com/contacts/6515eeed93331bc77433958f HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Bell",
-    "favoriteColor": "maroon"
+    "firstName": "Bran"
 }
 
 ### Delete Contact
-DELETE https://cse341-b19z.onrender.com/contacts/6515eef693331bc774339592 HTTP/1.1
+DELETE https://cse341-b19z.onrender.com/contacts/6515f0e45b729084c4ab5865 HTTP/1.1
