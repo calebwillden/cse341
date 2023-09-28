@@ -38,10 +38,34 @@ DELETE http://localhost:3000/contacts/6515eef693331bc774339592 HTTP/1.1
 // Production
 //*******************************************************************************
 ### Root
-GET https://cse341-b19z.onrender.com
+GET https://cse341-b19z.onrender.com/ HTTP/1.1
 
-### Contacts
-GET https://cse341-b19z.onrender.com/contacts
+### Get All Contacts
+GET https://cse341-b19z.onrender.com/contacts HTTP/1.1
 
-### Contact By Id
-GET https://cse341-b19z.onrender.com/contacts/650f4a70f67f2ef5a09fd7ca
+### Get Contacts By ID
+GET https://cse341-b19z.onrender.com/contacts/6515e3a1b344514c3e84b7af HTTP/1.1
+
+### Create Contact
+POST https://cse341-b19z.onrender.com/contacts HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john@smith.com",
+    "favoriteColor": "purple",
+    "birthday": "2000-01-1"
+}
+
+### Update Contact
+PUT https://cse341-b19z.onrender.com/contacts/6515e3a1b344514c3e84b7af HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Bell",
+    "favoriteColor": "maroon"
+}
+
+### Delete Contact
+DELETE https://cse341-b19z.onrender.com/contacts/6515eef693331bc774339592 HTTP/1.1

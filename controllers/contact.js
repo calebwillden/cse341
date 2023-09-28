@@ -100,7 +100,10 @@ const updateContact = async (req, res) => {
         const contactId = req.params.id;
 
         // Update Contact
-        await ContactModel.findByIdAndUpdate(contactId, contactData);
+        const result = await ContactModel.findByIdAndUpdate(
+            contactId,
+            contactData
+        );
 
         // If the update is null, it failed; throw an error.
         if (!result) {
