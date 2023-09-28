@@ -2,22 +2,37 @@
 // Localhost
 //*******************************************************************************
 ### Root
-GET http://localhost:3000/
+GET http://localhost:3000/ HTTP/1.1
 
-### Contact
-GET http://localhost:3000/contacts
+### Get All Contacts
+GET http://localhost:3000/contacts HTTP/1.1
+
+### Get Contacts By ID
+GET http://localhost:3000/contacts/6515e3a1b344514c3e84b7af HTTP/1.1
 
 ### Create Contact
-POST http://localhost:3000/contacts/create HTTP/1.1
+POST http://localhost:3000/contacts HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Bethany",
-    "lastName": "Willden",
-    "email": "bethany@willden.com",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john@smith.com",
     "favoriteColor": "purple",
-    "birthday": "2004-04-21"
+    "birthday": "2000-01-1"
 }
+
+### Update Contact
+PUT http://localhost:3000/contacts/6515e3a1b344514c3e84b7af HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Bell",
+    "favoriteColor": "maroon"
+}
+
+### Delete Contact
+DELETE http://localhost:3000/contacts/6515eef693331bc774339592 HTTP/1.1
 
 //*******************************************************************************
 // Production
