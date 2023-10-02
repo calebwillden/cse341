@@ -15,6 +15,15 @@ const port = process.env.PORT || 3000;
 const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cse341-caleb-willden.aw05k4k.mongodb.net/`;
 const app = express();
 
+// TODO: Add a config folder and move the URI and env variable import to a db.config.js folder
+/*const dotenv = require('dotenv');
+dotenv.config();
+
+module.exports = {
+  url: process.env.MONGODB_URI,
+};
+*/
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/', require('./routes')); // SOURCE: This line is based on code by Nathan Birch seen at https://www.youtube.com/watch?v=68ubggfsQlE

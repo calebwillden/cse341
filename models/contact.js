@@ -5,7 +5,7 @@ const ContactSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true },
     favoriteColor: { type: String, required: true },
-    birthday: { type: Date, required: true },
+    birthday: { type: Date, required: true }
 });
 
 const ContactModel = mongoose.model('contact', ContactSchema);
