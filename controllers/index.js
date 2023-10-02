@@ -1,7 +1,7 @@
 const ContactController = require('./contact');
-const ContactController = require('./root');
+const RootController = require('./root');
 
 module.exports = {
     ContactController,
-    RootController,
+    RootController
 };

@@ -70,7 +70,7 @@ const createContact = async (req, res) => {
         // Send a success message with the new contact's ID
         res.status(201).json({
             info: 'CONTACT_CREATED',
-            contactId: contact._id,
+            contactId: contact._id
         });
     } catch (err) {
         console.log(`Transaction aborted. ERROR:\n${err}`);
@@ -100,10 +100,7 @@ const updateContact = async (req, res) => {
         const contactId = req.params.id;
 
         // Update Contact
-        const result = await ContactModel.findByIdAndUpdate(
-            contactId,
-            contactData
-        );
+        const result = await ContactModel.findByIdAndUpdate(contactId, contactData);
 
         // If the update is null, it failed; throw an error.
         if (!result) {
@@ -130,7 +127,6 @@ const deleteContact = async (req, res) => {
         console.log('Deleting Contact...');
 
         // Get update data from body and ID from URL
-        const contactData = req.body;
         const contactId = req.params.id;
 
         // NOTE: Might need to manually cast to ObjectId for Render
@@ -168,5 +164,5 @@ module.exports = {
     getContactById,
     createContact,
     updateContact,
-    deleteContact,
+    deleteContact
 };
