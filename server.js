@@ -24,6 +24,16 @@ module.exports = {
 };
 */
 
+/*******************************************************************************
+ * Swagger — Documentation generation
+ *******************************************************************************/
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./api-docs/swagger-output.json');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+/*******************************************************************************
+ * Body Parser, Cors, and Router
+ *******************************************************************************/
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/', require('./routes')); // SOURCE: This line is based on code by Nathan Birch seen at https://www.youtube.com/watch?v=68ubggfsQlE
