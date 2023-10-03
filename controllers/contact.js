@@ -7,6 +7,15 @@ const { ContactModel } = require('../models');
  * /contacts
  ******************************************************************************/
 const getAllContacts = async (req, res) => {
+    /*
+    #swagger.tags['Contacts']
+    #swagger.summary = 'Get all contacts.'
+    #swagger.description = 'Returns an array of all contacts from the database.'
+    #swagger.responses[200] = {
+        description: 'Array of all contacts successfully retrieved.',
+        schema: { $ref: '#/definitions/ContactArrayOutput' }
+    }
+    */
     const allContacts = await ContactModel.find();
     res.send(allContacts);
 };
@@ -16,6 +25,21 @@ const getAllContacts = async (req, res) => {
  * /contacts/:id
  ******************************************************************************/
 const getContactById = async (req, res) => {
+    /*
+    #swagger.tags['Contacts']
+    #swagger.summary = 'Get a contact by ID.'
+    #swagger.description = 'Retrieves one contact from the database that has the contact_id provided as a URL parameter.'
+    #swagger.parameters['id'] = {
+        in: 'path',
+        description: 'The ID for the contact to be retrieved.',
+        required: true,
+        schema: { $ref: '#/definitions/id' }
+    }
+    #swagger.responses[200] = {
+        description: 'Contact successfully retrieved.',
+        schema: { $ref: '#/definitions/ContactOutput' }
+    }
+    */
     const id = new ObjectId(req.params.id);
     const contact = await ContactModel.find({ _id: id });
     res.send(contact);
@@ -35,6 +59,17 @@ const getContactById = async (req, res) => {
 * }
 /*******************************************************************************/
 const createContact = async (req, res) => {
+    /*
+    #swagger.tags['Contacts']
+    #swagger.summary = 'Create a contact.'
+    #swagger.description = 'Create a contact and insert it into the database.'
+    #swagger.parameters['contact'] = {
+        in: 'body',
+        description: 'The contact object to be inserted.',
+        required: true,
+        schema: { $ref: '#/definitions/ContactInput' }
+    }
+    */
     try {
         // Start Transaction
         const session = await mongoose.startSession();
@@ -72,6 +107,15 @@ const createContact = async (req, res) => {
             info: 'CONTACT_CREATED',
             contactId: contact._id
         });
+        /* 
+        #swagger.responses[201] = {
+            description: 'Contact created successfully.',
+            schema: {
+                info: 'CONTACT_CREATED',
+                contactId: { $ref: '#/definitions/id' }
+            }
+        }
+        */
     } catch (err) {
         console.log(`Transaction aborted. ERROR:\n${err}`);
         res.status(500).json({ info: 'ERR_SERVER_ERROR' });
@@ -92,6 +136,23 @@ const createContact = async (req, res) => {
  * }
  ******************************************************************************/
 const updateContact = async (req, res) => {
+    /*
+    #swagger.tags['Contacts']
+    #swagger.summary = 'Update a contact.'
+    #swagger.description = 'Update a contact and insert it into the database.'
+    #swagger.parameters['id'] = {
+        in: 'path',
+        description: 'The ID for the contact to be updated.',
+        required: true,
+        schema: { $ref: '#/definitions/id' }
+    }
+    #swagger.parameters['contact'] = {
+        in: 'body',
+        description: 'An object containing the properties to be updated and their new values.'
+        required: true,
+        schema: { $ref: '#/definitions/ContactInput' }
+    }
+    */
     try {
         console.log('Updating Contact...');
 
@@ -112,6 +173,11 @@ const updateContact = async (req, res) => {
         // Send a success message
         console.log('Complete.');
         res.status(204).send();
+        /*
+        #swagger.responses[204] = {
+            description: 'Contact successfully updated.'
+        }
+        */
     } catch (err) {
         res.status(500).json({ info: 'ERR_SERVER_ERROR' });
         console.log(`Aborted. ERROR:\n${err}`);
@@ -123,6 +189,17 @@ const updateContact = async (req, res) => {
  * /contacts/:id
  *******************************************************************************/
 const deleteContact = async (req, res) => {
+    /*
+    #swagger.tags['Contacts']
+    #swagger.summary = 'Deletes a contact.'
+    #swagger.description = 'Finds the contact with the ID provided in the URL and drops it from the database.'
+    #swagger.parameters['id'] = {
+        in: 'path',
+        description: 'The ID for the contact to be deleted.',
+        required: true,
+        schema: { $ref: '#/definitions/id' }
+    }
+    */
     try {
         console.log('Deleting Contact...');
 
@@ -153,6 +230,11 @@ const deleteContact = async (req, res) => {
         // Send a success message
         console.log('Complete.');
         res.status(200).json({ info: 'CONTACT_DELETED' });
+        /*
+        #swagger.responses[201] = {
+            description: 'Contact successfully deleted.'
+        }
+        */
     } catch (err) {
         res.status(500).json({ info: 'ERR_SERVER_ERROR' });
         console.log(`Aborted. ERROR:\n${err}`);

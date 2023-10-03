@@ -25,13 +25,6 @@ module.exports = {
 */
 
 /*******************************************************************************
- * Swagger — Documentation generation
- *******************************************************************************/
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./api-docs/swagger-output.json');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-/*******************************************************************************
  * Body Parser, Cors, and Router
  *******************************************************************************/
 app.use(bodyParser.json());
