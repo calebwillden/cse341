@@ -1,18 +1,20 @@
-// Add 'dev' when running the script to make it compatible for a local run.
-// Otherwise, it'll generate to operate on Render.
-const mode = process.argv[2];
-let host = mode == 'dev' ? 'localhost:8080' : 'cse341-b19z.onrender.com';
-let scheme = mode == 'dev' ? 'http' : 'https';
+// Include .env vars
+const dotenv = require('dotenv');
+dotenv.config();
 
-// Swagger Autogen Setup
+// Setup swaggerAutogen
 const swaggerAutogen = require('swagger-autogen')();
-const doc = {
+let host = 'cse341-b19z.onrender.com';
+const endpointsFiles = ['../server.js'];
+
+// Create deployable swagger JSON
+let deployedDoc = {
     info: {
         title: 'Contacts API',
         description: 'This API returns contact information stored in a test database.'
     },
     host: host,
-    schemes: [scheme],
+    schemes: ['http', 'https'],
     tags: ['Contacts'],
     definitions: {
         id: '650f46b8270b40a1fb152952',
@@ -34,10 +36,16 @@ const doc = {
         ContactArrayOutput: [{ $ref: '#/definitions/ContactInput' }]
     }
 };
-const outputFile = './swagger-output.json';
-const endpointsFiles = ['../server.js'];
+const deployedOutputFile = './swagger-output.json';
 
-// Output the Swagger.JSON file and run the server
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
+swaggerAutogen(deployedOutputFile, endpointsFiles, deployedDoc);
+
+// Create dev swagger JSON
+let devDoc = deployedDoc;
+devDoc.host = `localhost:${process.env.PORT}`; // Change the host
+const localOutputFile = './swagger-output-dev.json'; // Change the output file
+
+swaggerAutogen(localOutputFile, endpointsFiles, devDoc).then(() => {
+    // Run the server
     require('../server.js');
 });

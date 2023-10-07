@@ -6,9 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js",
-        "devstart": "nodemon server.js",
-        "swagger": "node ./api-docs/swagger.js",
-        "devswagger": "node ./api-docs/swagger.js dev"
+        "devstart": "nodemon ./api-docs/swagger.js --ignore ./api-docs/ dev"
     },
     "repository": {
         "type": "git",

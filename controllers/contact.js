@@ -77,9 +77,6 @@ const createContact = async (req, res) => {
         // Also need to properly close or abort the transaction...
 
         // Ensure all data is present
-        // TODO: Throw error based on which is missing, and
-        // have that included in the response instead of a
-        // generic error.
         const contactData = req.body;
         if (
             !contactData.firstName ||
@@ -89,6 +86,9 @@ const createContact = async (req, res) => {
             !contactData.birthday
         ) {
             throw 'ERR_MISSING_FIELD';
+            // TODO: Throw error based on which is missing, and
+            // have that included in the response instead of a
+            // generic error.
         }
 
         // Create Contact

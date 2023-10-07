@@ -1,0 +1,12 @@
+# Might eventually fill this out, but this is practice
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "devstart": "nodemon server.js",
+    "swagger": "node ./api-docs/swagger.js",
+    "swaggerdev": "nodemon ./api-docs/swagger.js --ignore ./api-docs/ dev"
+    /*
+        nodemon                 : node, but restarts when files are changed
+        --ignore ./api-docs     : nodemon ignores changes to documentation to prevent infinite loops
+        ./api-docs/swagger.js   : builds documentation
+    */
