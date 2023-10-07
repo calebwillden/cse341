@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
  * Express
  *******************************************************************************/
 dotenv.config(); // TO-DO: Implement this in a /db/connect.js file
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cse341-caleb-willden.aw05k4k.mongodb.net/`;
 const app = express();
 

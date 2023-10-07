@@ -7,23 +7,18 @@
   },
   "host": "localhost:8080",
   "basePath": "/",
+  "tags": [
+    "Contacts"
+  ],
   "schemes": [
     "http"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/contacts/{id}": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Get a contact by ID.",
         "description": "Retrieves one contact from the database that has the contact_id provided as a URL parameter.",
         "parameters": [
@@ -48,7 +43,9 @@
         }
       },
       "put": {
-        "tags": [],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Update a contact.",
         "description": "Update a contact and insert it into the database.",
         "parameters": [
@@ -60,6 +57,15 @@
             "description": "The ID for the contact to be updated.",
             "schema": {
               "$ref": "#/definitions/id"
+            }
+          },
+          {
+            "name": "contact",
+            "in": "body",
+            "description": "An object containing the properties to be updated and their new values.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContactInput"
             }
           }
         ],
@@ -73,7 +79,9 @@
         }
       },
       "delete": {
-        "tags": [],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Deletes a contact.",
         "description": "Finds the contact with the ID provided in the URL and drops it from the database.",
         "parameters": [
@@ -90,9 +98,6 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          },
-          "201": {
             "description": "Contact successfully deleted."
           },
           "500": {
@@ -103,7 +108,9 @@
     },
     "/contacts/": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Get all contacts.",
         "description": "Returns an array of all contacts from the database.",
         "responses": {
@@ -116,7 +123,9 @@
         }
       },
       "post": {
-        "tags": [],
+        "tags": [
+          "Contacts"
+        ],
         "summary": "Create a contact.",
         "description": "Create a contact and insert it into the database.",
         "parameters": [

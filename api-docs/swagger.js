@@ -1,12 +1,17 @@
-const swaggerAutogen = require('swagger-autogen')();
+// Environmental Variables
+const dotenv = require('dotenv');
+dotenv.config();
 
+// Swagger Autogen Setup
+const swaggerAutogen = require('swagger-autogen')();
 const doc = {
     info: {
         title: 'Contacts API',
         description: 'This API returns contact information stored in a test database.'
     },
-    host: 'localhost:8080',
-    schemes: ['http'],
+    host: process.env.HOST,
+    schemes: [process.env.SCHEME],
+    tags: ['Contacts'],
     definitions: {
         id: '650f46b8270b40a1fb152952',
         ContactInput: {
@@ -27,7 +32,6 @@ const doc = {
         ContactArrayOutput: [{ $ref: '#/definitions/ContactInput' }]
     }
 };
-
 const outputFile = './swagger-output.json';
 const endpointsFiles = ['../server.js'];
 
