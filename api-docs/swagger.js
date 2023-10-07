@@ -1,16 +1,13 @@
-// Environmental Variables
-const dotenv = require('dotenv');
-dotenv.config();
-
 // Swagger Autogen Setup
 const swaggerAutogen = require('swagger-autogen')();
+
 const doc = {
     info: {
         title: 'Contacts API',
         description: 'This API returns contact information stored in a test database.'
     },
-    host: process.env.HOST,
-    schemes: [process.env.SCHEME],
+    host: 'cse341-b19z.onrender.com',
+    schemes: ['https'],
     tags: ['Contacts'],
     definitions: {
         id: '650f46b8270b40a1fb152952',

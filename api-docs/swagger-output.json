@@ -5,13 +5,13 @@
     "description": "This API returns contact information stored in a test database.",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse341-b19z.onrender.com",
   "basePath": "/",
   "tags": [
     "Contacts"
   ],
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/contacts/{id}": {
