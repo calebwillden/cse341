@@ -4,7 +4,8 @@ dotenv.config();
 
 // Setup swaggerAutogen
 const swaggerAutogen = require('swagger-autogen')();
-let host = 'cse341-b19z.onrender.com';
+const host = 'cse341-b19z.onrender.com'; // TODO: Move to a config file?
+const schemes = ['https'];
 const endpointsFiles = ['../server.js'];
 
 // Create deployable swagger JSON
@@ -14,7 +15,7 @@ let doc = {
         description: 'This API returns contact information stored in a test database.'
     },
     host: host,
-    schemes: ['http', 'https'],
+    schemes: schemes,
     tags: ['Contacts'],
     definitions: {
         id: '650f46b8270b40a1fb152952',
@@ -47,8 +48,9 @@ swaggerAutogen(deployedSwaggerJsonFilePath, endpointsFiles, doc).then(() => {
     const deployedSwaggerJson = JSON.parse(deployedSwaggerJsonFileData);
     const devSwaggerJson = Object.assign({}, deployedSwaggerJson);
 
-    // Modify the host
+    // Modify the host and scheme
     devSwaggerJson.host = `localhost:${process.env.PORT}`;
+    devSwaggerJson.schemes = ['http'];
 
     // Save it to a new file
     fs.writeFileSync(devSwaggerJsonFilePath, JSON.stringify(devSwaggerJson));
