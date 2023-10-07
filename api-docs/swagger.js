@@ -1,25 +1,30 @@
+// Add 'dev' when running the script to make it compatible for a local run.
+// Otherwise, it'll generate to operate on Render.
+const mode = process.argv[2];
+let host = mode == 'dev' ? 'localhost:8080' : 'cse341-b19z.onrender.com';
+let scheme = mode == 'dev' ? 'http' : 'https';
+
 // Swagger Autogen Setup
 const swaggerAutogen = require('swagger-autogen')();
-
 const doc = {
     info: {
         title: 'Contacts API',
         description: 'This API returns contact information stored in a test database.'
     },
-    host: 'cse341-b19z.onrender.com',
-    schemes: ['https'],
+    host: host,
+    schemes: [scheme],
     tags: ['Contacts'],
     definitions: {
         id: '650f46b8270b40a1fb152952',
-        ContactInput: {
+        ContactOutput: {
             firstName: 'Caleb',
             lastName: 'Willden',
             email: 'wil17001@byui.edu',
             favoriteColor: 'blue',
-            birthday: '1997-04-11T00:00:00.000Z'
+            birthday: '1997-04-11T00:00:00.000Z',
+            __v: 0
         },
-        ContactOutput: {
-            _id: '650f46b8270b40a1fb152952',
+        ContactInput: {
             firstName: 'Caleb',
             lastName: 'Willden',
             email: 'wil17001@byui.edu',

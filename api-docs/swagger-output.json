@@ -170,7 +170,7 @@
       "type": "string",
       "example": "650f46b8270b40a1fb152952"
     },
-    "ContactInput": {
+    "ContactOutput": {
       "type": "object",
       "properties": {
         "firstName": {
@@ -192,16 +192,16 @@
         "birthday": {
           "type": "string",
           "example": "1997-04-11T00:00:00.000Z"
+        },
+        "__v": {
+          "type": "number",
+          "example": 0
         }
       }
     },
-    "ContactOutput": {
+    "ContactInput": {
       "type": "object",
       "properties": {
-        "_id": {
-          "type": "string",
-          "example": "650f46b8270b40a1fb152952"
-        },
         "firstName": {
           "type": "string",
           "example": "Caleb"

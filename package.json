@@ -7,7 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js",
         "devstart": "nodemon server.js",
-        "swagger-autogen": "node ./api-docs/swagger.js"
+        "swagger": "node ./api-docs/swagger.js",
+        "devswagger": "node ./api-docs/swagger.js dev"
     },
     "repository": {
         "type": "git",
