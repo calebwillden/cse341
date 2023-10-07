@@ -8,7 +8,7 @@ let host = 'cse341-b19z.onrender.com';
 const endpointsFiles = ['../server.js'];
 
 // Create deployable swagger JSON
-let deployedDoc = {
+let doc = {
     info: {
         title: 'Contacts API',
         description: 'This API returns contact information stored in a test database.'
@@ -18,15 +18,15 @@ let deployedDoc = {
     tags: ['Contacts'],
     definitions: {
         id: '650f46b8270b40a1fb152952',
-        ContactOutput: {
+        ContactInput: {
             firstName: 'Caleb',
             lastName: 'Willden',
             email: 'wil17001@byui.edu',
             favoriteColor: 'blue',
-            birthday: '1997-04-11T00:00:00.000Z',
-            __v: 0
+            birthday: '1997-04-11T00:00:00.000Z'
         },
-        ContactInput: {
+        ContactOutput: {
+            _id: '650f46b8270b40a1fb152952',
             firstName: 'Caleb',
             lastName: 'Willden',
             email: 'wil17001@byui.edu',
@@ -36,16 +36,23 @@ let deployedDoc = {
         ContactArrayOutput: [{ $ref: '#/definitions/ContactInput' }]
     }
 };
-const deployedOutputFile = './swagger-output.json';
+const deployedSwaggerJsonFilePath = './api-docs/swagger-output.json';
+const devSwaggerJsonFilePath = './api-docs/swagger-output-dev.json';
 
-swaggerAutogen(deployedOutputFile, endpointsFiles, deployedDoc);
+swaggerAutogen(deployedSwaggerJsonFilePath, endpointsFiles, doc).then(() => {
+    // Create a Dev swagger JSON
+    // Copy the JSON file
+    const fs = require('fs');
+    const deployedSwaggerJsonFileData = fs.readFileSync(deployedSwaggerJsonFilePath, 'utf8');
+    const deployedSwaggerJson = JSON.parse(deployedSwaggerJsonFileData);
+    const devSwaggerJson = Object.assign({}, deployedSwaggerJson);
 
-// Create dev swagger JSON
-let devDoc = deployedDoc;
-devDoc.host = `localhost:${process.env.PORT}`; // Change the host
-const localOutputFile = './swagger-output-dev.json'; // Change the output file
+    // Modify the host
+    devSwaggerJson.host = `localhost:${process.env.PORT}`;
 
-swaggerAutogen(localOutputFile, endpointsFiles, devDoc).then(() => {
+    // Save it to a new file
+    fs.writeFileSync(devSwaggerJsonFilePath, JSON.stringify(devSwaggerJson));
+
     // Run the server
     require('../server.js');
 });

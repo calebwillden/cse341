@@ -1,367 +1,220 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "Contacts API",
-    "description": "This API returns contact information stored in a test database.",
-    "version": "1.0.0"
-  },
-  "host": "localhost:8080",
-  "basePath": "/",
-  "tags": [
-    "Contacts"
-  ],
-  "schemes": [
-    "http",
-    "https"
-  ],
-  "paths": {
-    "/contacts/{id}": {
-      "get": {
-        "tags": [
-          "Contacts"
-        ],
-        "summary": "Get a contact by ID.",
-        "description": "Retrieves one contact from the database that has the contact_id provided as a URL parameter.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The ID for the contact to be retrieved.",
-            "schema": {
-              "$ref": "#/definitions/id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Contact successfully retrieved.",
-            "schema": {
-              "$ref": "#/definitions/ContactOutput"
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Contacts"
-        ],
-        "summary": "Update a contact.",
-        "description": "Update a contact and insert it into the database.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The ID for the contact to be updated.",
-            "schema": {
-              "$ref": "#/definitions/id"
-            }
-          },
-          {
-            "name": "contact",
-            "in": "body",
-            "description": "An object containing the properties to be updated and their new values.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ContactInput"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Contact successfully updated."
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Contacts"
-        ],
-        "summary": "Deletes a contact.",
-        "description": "Finds the contact with the ID provided in the URL and drops it from the database.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "The ID for the contact to be deleted.",
-            "schema": {
-              "$ref": "#/definitions/id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Contact successfully deleted."
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
+    "swagger": "2.0",
+    "info": {
+        "title": "Contacts API",
+        "description": "This API returns contact information stored in a test database.",
+        "version": "1.0.0"
     },
-    "/contacts/": {
-      "get": {
-        "tags": [
-          "Contacts"
-        ],
-        "summary": "Get all contacts.",
-        "description": "Returns an array of all contacts from the database.",
-        "responses": {
-          "200": {
-            "description": "Array of all contacts successfully retrieved.",
-            "schema": {
-              "$ref": "#/definitions/ContactArrayOutput"
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Contacts"
-        ],
-        "summary": "Create a contact.",
-        "description": "Create a contact and insert it into the database.",
-        "parameters": [
-          {
-            "name": "contact",
-            "in": "body",
-            "description": "The contact object to be inserted.",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ContactInput"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Contact created successfully.",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "info": {
-                  "type": "string",
-                  "example": "CONTACT_CREATED"
-                },
-                "contactId": {
-                  "$ref": "#/definitions/id"
+    "host": "cse341-b19z.onrender.com",
+    "basePath": "/",
+    "tags": ["Contacts"],
+    "schemes": ["http", "https"],
+    "paths": {
+        "/contacts/{id}": {
+            "get": {
+                "tags": ["Contacts"],
+                "summary": "Get a contact by ID.",
+                "description": "Retrieves one contact from the database that has the contact_id provided as a URL parameter.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The ID for the contact to be retrieved.",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact successfully retrieved.",
+                        "schema": {
+                            "$ref": "#/definitions/ContactOutput"
+                        }
+                    }
                 }
-              },
-              "xml": {
-                "name": "main"
-              }
+            },
+            "put": {
+                "tags": ["Contacts"],
+                "summary": "Update a contact.",
+                "description": "Update a contact and insert it into the database.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The ID for the contact to be updated.",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    {
+                        "name": "contact",
+                        "in": "body",
+                        "description": "An object containing the properties to be updated and their new values.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Contact successfully updated."
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Contacts"],
+                "summary": "Deletes a contact.",
+                "description": "Finds the contact with the ID provided in the URL and drops it from the database.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The ID for the contact to be deleted.",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Contact successfully deleted."
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+        },
+        "/contacts/": {
+            "get": {
+                "tags": ["Contacts"],
+                "summary": "Get all contacts.",
+                "description": "Returns an array of all contacts from the database.",
+                "responses": {
+                    "200": {
+                        "description": "Array of all contacts successfully retrieved.",
+                        "schema": {
+                            "$ref": "#/definitions/ContactArrayOutput"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Contacts"],
+                "summary": "Create a contact.",
+                "description": "Create a contact and insert it into the database.",
+                "parameters": [
+                    {
+                        "name": "contact",
+                        "in": "body",
+                        "description": "The contact object to be inserted.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Contact created successfully.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "info": {
+                                    "type": "string",
+                                    "example": "CONTACT_CREATED"
+                                },
+                                "contactId": {
+                                    "$ref": "#/definitions/id"
+                                }
+                            },
+                            "xml": {
+                                "name": "main"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
         }
-      }
+    },
+    "definitions": {
+        "id": {
+            "type": "string",
+            "example": "650f46b8270b40a1fb152952"
+        },
+        "ContactInput": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "example": "Caleb"
+                },
+                "lastName": {
+                    "type": "string",
+                    "example": "Willden"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "wil17001@byui.edu"
+                },
+                "favoriteColor": {
+                    "type": "string",
+                    "example": "blue"
+                },
+                "birthday": {
+                    "type": "string",
+                    "example": "1997-04-11T00:00:00.000Z"
+                }
+            }
+        },
+        "ContactOutput": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "example": "650f46b8270b40a1fb152952"
+                },
+                "firstName": {
+                    "type": "string",
+                    "example": "Caleb"
+                },
+                "lastName": {
+                    "type": "string",
+                    "example": "Willden"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "wil17001@byui.edu"
+                },
+                "favoriteColor": {
+                    "type": "string",
+                    "example": "blue"
+                },
+                "birthday": {
+                    "type": "string",
+                    "example": "1997-04-11T00:00:00.000Z"
+                }
+            }
+        },
+        "ContactArrayOutput": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/ContactInput"
+            }
+        }
     }
-  },
-  "definitions": {
-    "id": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "example": "string"
-        },
-        "example": {
-          "type": "string",
-          "example": "650f46b8270b40a1fb152952"
-        }
-      }
-    },
-    "ContactOutput": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "example": "object"
-        },
-        "properties": {
-          "type": "object",
-          "properties": {
-            "firstName": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "Caleb"
-                }
-              }
-            },
-            "lastName": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "Willden"
-                }
-              }
-            },
-            "email": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "wil17001@byui.edu"
-                }
-              }
-            },
-            "favoriteColor": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "blue"
-                }
-              }
-            },
-            "birthday": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "1997-04-11T00:00:00.000Z"
-                }
-              }
-            },
-            "__v": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "number"
-                },
-                "example": {
-                  "type": "number",
-                  "example": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "ContactInput": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "example": "object"
-        },
-        "properties": {
-          "type": "object",
-          "properties": {
-            "firstName": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "Caleb"
-                }
-              }
-            },
-            "lastName": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "Willden"
-                }
-              }
-            },
-            "email": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "wil17001@byui.edu"
-                }
-              }
-            },
-            "favoriteColor": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "blue"
-                }
-              }
-            },
-            "birthday": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "string"
-                },
-                "example": {
-                  "type": "string",
-                  "example": "1997-04-11T00:00:00.000Z"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "ContactArrayOutput": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "example": "array"
-        },
-        "items": {
-          "$ref": "#/definitions/ContactInput"
-        }
-      }
-    }
-  }
 }
